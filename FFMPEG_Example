@@ -1,0 +1,6 @@
+ffmpeg -t 45  -ss 00:00:3 -i SampleVideo_1280x720_5mb.mp4 -filter_complex "fps=12,scale=w=360:h=-2,setpts=0.125*PTS" small-clip.gif -y
+
+# The one below give high quality gif, but very slow
+
+ffmpeg -t 30  -ss 00:00:3 -i SampleVideo_1280x720_5mb.mp4 -filter_complex "[0:v] fps=12,scale=w=480:h=-1,split [a][b];[a] palettegen [p];[b][p] paletteuse"
+ small-clip.gif -y
